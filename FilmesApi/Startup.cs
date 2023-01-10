@@ -1,8 +1,17 @@
+using Filmes.AutoMapper.Interfaces;
+using Filmes.AutoMapper.Services;
+using Filmes.Infra.Data.Contexts;
+using Filmes.Infra.Data.Interfaces;
+using Filmes.Infra.Data.Repositories;
+using Filmes.Services.Interfaces;
+using Filmes.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Filters;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -30,6 +39,11 @@ namespace FilmesApi
             services.AddCors();
             services.AddControllers();
 
+            string ConnectionString = Configuration.GetConnectionString("ProjectDatabase");
+            services.AddDbContext<ProjectContext>(options =>
+            {
+                options.UseSqlServer(ConnectionString);
+            });
 
             var key = Encoding.ASCII.GetBytes(Settings.Secret);
             services.AddAuthentication(x =>
@@ -54,6 +68,10 @@ namespace FilmesApi
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FilmesApi", Version = "v1" });
             });
+
+            services.AddScoped<IAuthService, AuthService>();
+            services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddSingleton<IAutoMapperService>(new AutoMapperService());
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

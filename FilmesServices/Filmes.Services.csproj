@@ -4,4 +4,13 @@
     <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="CryptSharpOfficial" Version="2.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Filmes.Infra.Data\Filmes.Infra.csproj" />
+    <ProjectReference Include="..\FilmesDomain\Filmes.Domain.csproj" />
+  </ItemGroup>
+
 </Project>

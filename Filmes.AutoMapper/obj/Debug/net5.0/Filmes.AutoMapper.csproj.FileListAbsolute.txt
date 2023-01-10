@@ -1,0 +1,15 @@
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\bin\Debug\net5.0\Filmes.AutoMapper.deps.json
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\bin\Debug\net5.0\Filmes.AutoMapper.dll
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\bin\Debug\net5.0\Filmes.AutoMapper.pdb
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\bin\Debug\net5.0\Filmes.Domain.dll
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\bin\Debug\net5.0\Filmes.Domain.pdb
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.csproj.AssemblyReference.cache
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.AssemblyInfoInputs.cache
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.AssemblyInfo.cs
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.csproj.CoreCompileInputs.cache
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.csproj.CopyComplete
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.dll
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\refint\Filmes.AutoMapper.dll
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\Filmes.AutoMapper.pdb
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\Filmes.AutoMapper\obj\Debug\net5.0\ref\Filmes.AutoMapper.dll
