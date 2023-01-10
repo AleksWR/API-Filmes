@@ -1,4 +1,5 @@
-﻿using Filmes.AutoMapper.Interfaces;
+﻿using CryptSharp;
+using Filmes.AutoMapper.Interfaces;
 using Filmes.Domain.Entities;
 using Filmes.Infra.Data.Interfaces;
 using Filmes.Infra.Data.Repositories;
@@ -28,16 +29,11 @@ namespace Filmes.Services.Services
             var userFounded = _authRepository.GetUserByUsername(User.Username);
             if(userFounded != null)
             {
-                bool PasswordCorrect = CryptSharpService.CheckIfCryptedPasswordMatch(User.Password, userFounded.Password);
+                bool PasswordCorrect = Crypter.CheckPassword(User.Password, userFounded.Password);
                 if (PasswordCorrect == true)
-                {
-                    var mapperObject = _mapper.GetMapper();
-                    var userModel = mapperObject.Map<UserModel>(userFounded);
-
                     return true;
-                }
-
-                return false;            
+                else
+                    return false;            
             }
 
             return false;
@@ -45,7 +41,7 @@ namespace Filmes.Services.Services
 
         public void AddNewUser(UserModel User)
         {
-            User.Password = CryptSharpService.CryptPassword(User.Password);
+            User.Password = Crypter.MD5.Crypt(User.Password);
 
             var mapperObject = _mapper.GetMapper();
             var userModel = mapperObject.Map<Auth>(User);

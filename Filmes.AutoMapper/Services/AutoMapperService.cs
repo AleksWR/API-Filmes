@@ -29,6 +29,7 @@ namespace Filmes.AutoMapper.Services
             configuration = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<AuthUserProfile>();
+                cfg.AddProfile<FilmeProfile>();
             });
         }
     }

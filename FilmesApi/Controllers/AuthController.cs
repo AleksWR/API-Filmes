@@ -4,6 +4,7 @@ using FilmesApi.Services;
 using FilmesDomain.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace FilmesApi.Controllers
 {
@@ -18,6 +19,12 @@ namespace FilmesApi.Controllers
             _authService = authService;
         }
 
+
+        /// <summary>Efetua Login e Obtem Token </summary>
+        /// <returns>Bearer Token</returns>
+        /// <response code="200">Token Gerado</response>
+        /// <response code="400">Falha no Login</response>
+        /// 
         [Route("Login")]
         [HttpPost]
         public IActionResult LoginAndGetToken(UserModel User)
@@ -34,14 +41,25 @@ namespace FilmesApi.Controllers
             return BadRequest();
         }
 
+        /// <summary>Cria novo Usuário</summary>
+        /// <returns>No Content</returns>
+        /// <response code="204">Usuario Criado com Sucesso</response>
+        /// <response code="400">Falha na criação do usuário</response>
+        /// 
         [Route("Register")]
         [HttpPost]
         public IActionResult Register(UserModel User)
         {
             if (ModelState.IsValid)
             {
-                _authService.AddNewUser(User);
-                return NoContent();
+                try
+                {
+                    _authService.AddNewUser(User);
+                    return NoContent();
+                }catch(Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
             }
 
             return BadRequest();

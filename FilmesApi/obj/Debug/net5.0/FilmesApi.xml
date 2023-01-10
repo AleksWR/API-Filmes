@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>FilmesApi</name>
+    </assembly>
+    <members>
+        <member name="M:FilmesApi.Controllers.AuthController.LoginAndGetToken(FilmesDomain.Models.UserModel)">
+            <summary>Efetua Login e Obtem Token </summary>
+            <returns>Bearer Token</returns>
+            <response code="200">Token Gerado</response>
+            <response code="400">Falha no Login</response>
+            
+        </member>
+        <member name="M:FilmesApi.Controllers.AuthController.Register(FilmesDomain.Models.UserModel)">
+            <summary>Cria novo Usuário</summary>
+            <returns>No Content</returns>
+            <response code="204">Usuario Criado com Sucesso</response>
+            <response code="400">Falha na criação do usuário</response>
+            
+        </member>
+        <member name="M:FilmesApi.Controllers.FilmesController.GetFilmes">
+            <summary>Obtem Filmes </summary>
+            <returns>Retorna todos os filmes disponiveis</returns>
+            <response code="200">Retorna Filmes</response>
+            <response code="404">Nenhum Filme Encontrado</response>
+        </member>
+        <member name="M:FilmesApi.Controllers.FilmesController.GetFilmeById(System.Int32)">
+            <summary>Obtem Filme por Id </summary>
+            <returns>Retorna filme buscado</returns>
+            <response code="200">Retorna Filme</response>
+            <response code="404">Filme não Encontrado</response>
+            
+        </member>
+        <member name="M:FilmesApi.Controllers.FilmesController.DeleteFilmeById(System.Int32)">
+            <summary>Deleta filme por Id </summary>
+            <returns>No Content</returns>
+            <response code="204">Filme deletado com sucesso</response>
+            <response code="400">Erro para deletar o registro</response>
+            
+        </member>
+        <member name="M:FilmesApi.Controllers.FilmesController.UpdateFilme(System.Int32,Filmes.Domain.Models.FilmeModel)">
+            <summary>Altera dados de um filme por Id </summary>
+            <returns>No Content</returns>
+            <response code="204">Alterações efetuadas com sucesso</response>
+            <response code="400">Erro para efetuar alterações</response>
+            
+        </member>
+        <member name="M:FilmesApi.Controllers.FilmesController.AddFilme(Filmes.Domain.Models.FilmeModel)">
+            <summary>Adiciona novo Filme </summary>
+            <returns>No Content</returns>
+            <response code="204">Adição de filme efetuada com sucesso</response>
+            <response code="400">Erro para adicionar filme</response>
+            
+        </member>
+    </members>
+</doc>

@@ -3,6 +3,8 @@ using Filmes.AutoMapper.Services;
 using Filmes.Infra.Data.Contexts;
 using Filmes.Infra.Data.Interfaces;
 using Filmes.Infra.Data.Repositories;
+using Filmes.Infra.Interfaces;
+using Filmes.Infra.Repositories;
 using Filmes.Services.Interfaces;
 using Filmes.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -20,7 +22,9 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -67,10 +71,17 @@ namespace FilmesApi
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "FilmesApi", Version = "v1" });
+
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
             });
 
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IAuthRepository, AuthRepository>();
+            services.AddScoped<IFilmeService, FilmeService>();
+            services.AddScoped<IFilmeRepository, FilmeRepository>();
+
             services.AddSingleton<IAutoMapperService>(new AutoMapperService());
         }
 
