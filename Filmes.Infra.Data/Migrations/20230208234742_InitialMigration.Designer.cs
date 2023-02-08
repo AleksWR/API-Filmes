@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Filmes.Infra.Data.Migrations
+namespace Filmes.Infra.Migrations
 {
     [DbContext(typeof(ProjectContext))]
-    [Migration("20230110014150_InitialMigration")]
+    [Migration("20230208234742_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -29,20 +29,10 @@ namespace Filmes.Infra.Data.Migrations
                         .HasColumnName("auth_id")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("auth_email");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("auth_password");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("auth_role");
 
                     b.Property<string>("Username")
                         .IsRequired()

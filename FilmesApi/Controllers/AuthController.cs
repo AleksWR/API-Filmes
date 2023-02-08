@@ -27,7 +27,7 @@ namespace FilmesApi.Controllers
         /// 
         [Route("Login")]
         [HttpPost]
-        public IActionResult LoginAndGetToken(UserModel User)
+        public IActionResult LoginAndGetToken(AuthActionsDTO User)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +48,7 @@ namespace FilmesApi.Controllers
         /// 
         [Route("Register")]
         [HttpPost]
-        public IActionResult Register(UserModel User)
+        public IActionResult Register(AuthActionsDTO User)
         {
             if (ModelState.IsValid)
             {

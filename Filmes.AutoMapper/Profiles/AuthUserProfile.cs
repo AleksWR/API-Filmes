@@ -13,8 +13,8 @@ namespace Filmes.AutoMapper.Profiles
     {
         public AuthUserProfile()
         {
-            CreateMap<Auth, UserModel>();
-            CreateMap<UserModel, Auth>();
+            CreateMap<Auth, AuthActionsDTO>();
+            CreateMap<AuthActionsDTO, Auth>();
         }
     }
 }

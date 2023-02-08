@@ -1,32 +1,17 @@
-using Filmes.AutoMapper.Interfaces;
-using Filmes.AutoMapper.Services;
 using Filmes.Infra.Data.Contexts;
-using Filmes.Infra.Data.Interfaces;
-using Filmes.Infra.Data.Repositories;
-using Filmes.Infra.Interfaces;
-using Filmes.Infra.Repositories;
-using Filmes.Services.Interfaces;
-using Filmes.Services.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace FilmesApi
 {
@@ -75,22 +60,33 @@ namespace FilmesApi
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    Description = "JWT Authorization Header - utilizado com Bearer Authentication.\r\n\r\n" +
+                         "Digite 'Bearer' [espaço] e então seu token no campo abaixo.\r\n\r\n" +
+                         "Exemplo (informar sem as aspas): 'Bearer 12345abcdef'",
+                    Name = "Authorization",
+                    In = ParameterLocation.Header,
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT"
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {new OpenApiSecurityScheme{ Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "Bearer"} }, Array.Empty<string>()}
+                });
             });
 
-            services.AddScoped<IAuthService, AuthService>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IFilmeService, FilmeService>();
-            services.AddScoped<IFilmeRepository, FilmeRepository>();
-
-            services.AddSingleton<IAutoMapperService>(new AutoMapperService());
+            RegisterDependencies.RegisterServices(services);
+            RegisterDependencies.RegisterRepositories(services);
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            if (env.IsDevelopment())
-            {
-                app.UseDeveloperExceptionPage();
-            }
+            var loggerFactory = app.ApplicationServices.GetService<ILoggerFactory>();
+            app.UseProblemDetailsExceptionHandler(loggerFactory);
 
             app.UseCors(p =>
             {

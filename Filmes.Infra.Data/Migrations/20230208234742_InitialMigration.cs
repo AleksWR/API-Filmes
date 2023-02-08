@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Filmes.Infra.Data.Migrations
+namespace Filmes.Infra.Migrations
 {
     public partial class InitialMigration : Migration
     {
@@ -16,8 +16,6 @@ namespace Filmes.Infra.Data.Migrations
                 {
                     auth_id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    auth_role = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    auth_email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     auth_username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     auth_password = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },

@@ -15,9 +15,7 @@ namespace Filmes.Infra.Data.Configurations
         {
             builder.ToTable("Filmes_Auth");
             builder.Property(p => p.Id).IsRequired().HasColumnName("auth_id");
-            builder.Property(p => p.Role).IsRequired().HasColumnName("auth_role");
             builder.Property(p => p.Username).IsRequired().HasColumnName("auth_username");
-            builder.Property(p => p.Email).IsRequired().HasColumnName("auth_email");
             builder.Property(p => p.Password).IsRequired().HasColumnName("auth_password");
         }
     }

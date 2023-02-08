@@ -4,14 +4,14 @@
         <name>FilmesApi</name>
     </assembly>
     <members>
-        <member name="M:FilmesApi.Controllers.AuthController.LoginAndGetToken(FilmesDomain.Models.UserModel)">
+        <member name="M:FilmesApi.Controllers.AuthController.LoginAndGetToken(FilmesDomain.Models.AuthActionsDTO)">
             <summary>Efetua Login e Obtem Token </summary>
             <returns>Bearer Token</returns>
             <response code="200">Token Gerado</response>
             <response code="400">Falha no Login</response>
             
         </member>
-        <member name="M:FilmesApi.Controllers.AuthController.Register(FilmesDomain.Models.UserModel)">
+        <member name="M:FilmesApi.Controllers.AuthController.Register(FilmesDomain.Models.AuthActionsDTO)">
             <summary>Cria novo Usuário</summary>
             <returns>No Content</returns>
             <response code="204">Usuario Criado com Sucesso</response>
@@ -38,14 +38,14 @@
             <response code="400">Erro para deletar o registro</response>
             
         </member>
-        <member name="M:FilmesApi.Controllers.FilmesController.UpdateFilme(System.Int32,Filmes.Domain.Models.FilmeModel)">
+        <member name="M:FilmesApi.Controllers.FilmesController.UpdateFilme(System.Int32,Filmes.Domain.Models.FilmeActionsDTO)">
             <summary>Altera dados de um filme por Id </summary>
             <returns>No Content</returns>
             <response code="204">Alterações efetuadas com sucesso</response>
             <response code="400">Erro para efetuar alterações</response>
             
         </member>
-        <member name="M:FilmesApi.Controllers.FilmesController.AddFilme(Filmes.Domain.Models.FilmeModel)">
+        <member name="M:FilmesApi.Controllers.FilmesController.AddFilme(Filmes.Domain.Models.FilmeActionsDTO)">
             <summary>Adiciona novo Filme </summary>
             <returns>No Content</returns>
             <response code="204">Adição de filme efetuada com sucesso</response>

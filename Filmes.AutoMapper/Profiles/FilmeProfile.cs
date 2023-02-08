@@ -13,8 +13,8 @@ namespace Filmes.AutoMapper.Profiles
     {
         public FilmeProfile()
         {
-            CreateMap<Filme, FilmeModel>();
-            CreateMap<FilmeModel, Filme>();
+            CreateMap<Filme, FilmeActionsDTO>();
+            CreateMap<FilmeActionsDTO, Filme>();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Filmes.AutoMapper.Interfaces;
+﻿using AutoMapper;
+using Filmes.AutoMapper.Interfaces;
 using Filmes.Domain.Entities;
 using Filmes.Domain.Models;
 using Filmes.Infra.Interfaces;
@@ -16,18 +17,16 @@ namespace Filmes.Services.Services
     public class FilmeService : IFilmeService
     {
         private IFilmeRepository _filmeRepository;
-        private IAutoMapperService _mapper;
+        private IMapper _mapper;
         public FilmeService(IFilmeRepository filmeRepository, IAutoMapperService mapper)
         {
             _filmeRepository = filmeRepository;
-            _mapper = mapper;
+            _mapper = mapper.GetMapper();
         }
 
-        public void AddNewFilme(FilmeModel filme)
+        public void AddNewFilme(FilmeActionsDTO filme)
         {
-            var mapperObject = _mapper.GetMapper();
-            var filmeEntitie = mapperObject.Map<Filme>(filme);
-
+            var filmeEntitie = _mapper.Map<Filme>(filme);
             _filmeRepository.AddNewFilme(filmeEntitie);
         }
 
@@ -36,23 +35,19 @@ namespace Filmes.Services.Services
             _filmeRepository.DeleteFilmeById(id);
         }
 
-        public List<FilmeModel> GetAllFilmes()
+        public List<FilmeActionsDTO> GetAllFilmes()
         {
             List<Filme> Filmes = _filmeRepository.GetAllFilmes();
-
-            var mapperObject = _mapper.GetMapper();
-            return mapperObject.Map<List<FilmeModel>>(Filmes);
+            return _mapper.Map<List<FilmeActionsDTO>>(Filmes);
         }
 
-        public FilmeModel GetFilmeById(int id)
+        public FilmeActionsDTO GetFilmeById(int id)
         {
             Filme film = _filmeRepository.GetFilmeById(id);
-
-            var mapperObject = _mapper.GetMapper();
-            return mapperObject.Map<FilmeModel>(film);
+            return _mapper.Map<FilmeActionsDTO>(film);
         }
 
-        public void UpdateExistingFilme(FilmeModel filme, int id)
+        public void UpdateExistingFilme(FilmeActionsDTO filme, int id)
         {
             _filmeRepository.UpdateExistingFilme(filme, id);
         }

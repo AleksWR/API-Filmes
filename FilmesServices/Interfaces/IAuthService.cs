@@ -9,7 +9,7 @@ namespace Filmes.Services.Interfaces
 {
     public interface IAuthService
     {
-        bool CheckIfUserIsAuthenticate(UserModel User);
-        void AddNewUser(UserModel User);
+        bool CheckIfUserIsAuthenticate(AuthActionsDTO User);
+        void AddNewUser(AuthActionsDTO User);
     }
 }

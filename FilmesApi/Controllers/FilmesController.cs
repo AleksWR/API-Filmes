@@ -1,6 +1,7 @@
 ﻿using Filmes.Domain.Models;
 using Filmes.Services.Interfaces;
 using Filmes.Services.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace FilmesApi.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class FilmesController : ControllerBase
@@ -28,7 +30,7 @@ namespace FilmesApi.Controllers
         [HttpGet]
         public IActionResult GetFilmes()
         {
-            List<FilmeModel> Filmes = _filmeService.GetAllFilmes();
+            List<FilmeActionsDTO> Filmes = _filmeService.GetAllFilmes();
             if (Filmes.Count > 0)
                 return Ok(Filmes);
 
@@ -44,7 +46,7 @@ namespace FilmesApi.Controllers
         [HttpGet]
         public IActionResult GetFilmeById(int id)
         {
-            FilmeModel Filme = _filmeService.GetFilmeById(id);
+            FilmeActionsDTO Filme = _filmeService.GetFilmeById(id);
             if (Filme != null)
                 return Ok(Filme);
 
@@ -78,7 +80,7 @@ namespace FilmesApi.Controllers
         /// 
         [Route("{id}")]
         [HttpPut]
-        public IActionResult UpdateFilme(int id, [FromBody] FilmeModel filme)
+        public IActionResult UpdateFilme(int id, [FromBody] FilmeActionsDTO filme)
         {
             try
             {
@@ -97,7 +99,7 @@ namespace FilmesApi.Controllers
         /// <response code="400">Erro para adicionar filme</response>
         /// 
         [HttpPost]
-        public IActionResult AddFilme([FromBody] FilmeModel filme)
+        public IActionResult AddFilme([FromBody] FilmeActionsDTO filme)
         {
             try
             {

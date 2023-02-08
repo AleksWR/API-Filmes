@@ -13,7 +13,7 @@ namespace Filmes.Infra.Interfaces
         List<Filme> GetAllFilmes();
         Filme GetFilmeById(int id);
         void AddNewFilme(Filme filme);
-        void UpdateExistingFilme(FilmeModel filme, int id);
+        void UpdateExistingFilme(FilmeActionsDTO filme, int id);
         void DeleteFilmeById(int id);
     }
 }

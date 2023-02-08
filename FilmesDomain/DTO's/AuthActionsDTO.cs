@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace FilmesDomain.Models
 {
-    public class UserModel
+    public class AuthActionsDTO
     {
-        public string Role { get; set; }
         public string Username { get; set; }
-        public string Email { get; set; }
         public string Password { get; set; }
     }
 }

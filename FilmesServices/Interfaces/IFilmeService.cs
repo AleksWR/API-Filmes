@@ -10,10 +10,10 @@ namespace Filmes.Services.Interfaces
 {
     public interface IFilmeService
     {
-        List<FilmeModel> GetAllFilmes();
-        FilmeModel GetFilmeById(int id);
-        void AddNewFilme(FilmeModel filme);
-        void UpdateExistingFilme(FilmeModel filme, int id);
+        List<FilmeActionsDTO> GetAllFilmes();
+        FilmeActionsDTO GetFilmeById(int id);
+        void AddNewFilme(FilmeActionsDTO filme);
+        void UpdateExistingFilme(FilmeActionsDTO filme, int id);
         void DeleteFilmeById(int id);
     }
 }

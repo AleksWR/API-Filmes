@@ -33,6 +33,8 @@ namespace Filmes.Infra.Repositories
                 _context.Filme.Remove(filme);
                 _context.SaveChanges();
             }
+            else
+                throw new Exception("Filme Nao Encontrado");
         }
 
         public List<Filme> GetAllFilmes()
@@ -45,7 +47,7 @@ namespace Filmes.Infra.Repositories
             return _context.Filme.Where(p => p.Id == id).FirstOrDefault(); 
         }
 
-        public void UpdateExistingFilme(FilmeModel filme, int id)
+        public void UpdateExistingFilme(FilmeActionsDTO filme, int id)
         {
             Filme filmeToEdit = _context.Filme.Where(p => p.Id == id).FirstOrDefault();
 
@@ -62,6 +64,8 @@ namespace Filmes.Infra.Repositories
 
                 _context.SaveChanges();
             }
+            else
+                throw new Exception("Filme Nao Encontrado");
         }
     }
 }

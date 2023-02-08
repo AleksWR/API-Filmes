@@ -1,4 +1,5 @@
-﻿using CryptSharp;
+﻿using AutoMapper;
+using CryptSharp;
 using Filmes.AutoMapper.Interfaces;
 using Filmes.Domain.Entities;
 using Filmes.Infra.Data.Interfaces;
@@ -16,15 +17,15 @@ namespace Filmes.Services.Services
     public class AuthService : IAuthService
     {
         private IAuthRepository _authRepository;
-        private IAutoMapperService _mapper;
+        private IMapper _mapper;
 
         public AuthService(IAuthRepository authRepository, IAutoMapperService mapper)
         {
             _authRepository = authRepository;
-            _mapper = mapper;
+            _mapper = mapper.GetMapper();
         }
 
-        public bool CheckIfUserIsAuthenticate(UserModel User)
+        public bool CheckIfUserIsAuthenticate(AuthActionsDTO User)
         {
             var userFounded = _authRepository.GetUserByUsername(User.Username);
             if(userFounded != null)
@@ -39,12 +40,10 @@ namespace Filmes.Services.Services
             return false;
         }
 
-        public void AddNewUser(UserModel User)
+        public void AddNewUser(AuthActionsDTO User)
         {
             User.Password = Crypter.MD5.Crypt(User.Password);
-
-            var mapperObject = _mapper.GetMapper();
-            var userModel = mapperObject.Map<Auth>(User);
+            var userModel = _mapper.Map<Auth>(User);
 
             _authRepository.AddNewUser(userModel);
         }

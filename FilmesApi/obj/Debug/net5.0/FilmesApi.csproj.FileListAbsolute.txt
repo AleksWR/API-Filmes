@@ -73,3 +73,4 @@ C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\FilmesApi\bin\Deb
 C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\FilmesApi\bin\Debug\net5.0\Filmes.Infra.pdb
 C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\FilmesApi\bin\Debug\net5.0\FilmesApi.xml
 C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\FilmesApi\obj\Debug\net5.0\FilmesApi.xml
+C:\Users\alex.willian\Desktop\RepositorioProjetosTestes\Filmes\FilmesApi\bin\Debug\net5.0\Newtonsoft.Json.dll

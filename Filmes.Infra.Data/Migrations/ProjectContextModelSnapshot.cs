@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Filmes.Infra.Data.Migrations
+namespace Filmes.Infra.Migrations
 {
     [DbContext(typeof(ProjectContext))]
     partial class ProjectContextModelSnapshot : ModelSnapshot
@@ -27,20 +27,10 @@ namespace Filmes.Infra.Data.Migrations
                         .HasColumnName("auth_id")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("auth_email");
-
                     b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
                         .HasColumnName("auth_password");
-
-                    b.Property<string>("Role")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasColumnName("auth_role");
 
                     b.Property<string>("Username")
                         .IsRequired()
